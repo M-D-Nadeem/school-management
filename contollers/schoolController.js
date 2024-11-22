@@ -9,7 +9,7 @@ const addSchool=(req,res)=>{
     const query=`insert into school(name,address,latitude,longitude) values (?, ?, ?, ?);`
     connection.query(query,[name, address, latitude, longitude],(err,result)=>{
         if (err) {
-            return res.status(500).json({ error: 'Failed to add the school' });
+            return res.status(500).json({ error: 'Failed to add the school',err });
           }
           return res.status(200).json({ message: 'School added successfully', id: result.insertId })
     })
